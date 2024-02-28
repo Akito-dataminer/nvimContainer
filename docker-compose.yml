@@ -16,17 +16,8 @@ services:
       # - type: bind
       #   source: "<your-ssh-key>" #your github ssh key dir
       #   target: "/root/.ssh"
-    networks:
-      - backend
-      - frontend
     ports:
       - 6497:6497 # QWERTY配列を左から順に数えただけ
 
 volumes:
   nvim:
-
-networks:
-  backend: # ファイルシステムを同期するため
-    driver: bridge
-  frontend: # Neovimにリモートアクセスを許可するため
-    driver: bridge

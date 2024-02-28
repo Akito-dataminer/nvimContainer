@@ -17,9 +17,7 @@ RUN apt-get update && apt-get upgrade -y \
   tar \
   curl \
   locales \
-  iproute2 \
-  inetutils-ping \
-  rclone \
+  rsync \
   ripgrep \
   nodejs \
   npm \
@@ -29,8 +27,6 @@ RUN apt-get update && apt-get upgrade -y \
   && n stable \
   && apt-get purge -y nodejs npm \
   && apt-get autoremove -y && apt-get clean -y && apt-get autoclean -y \
-  # Install rclone
-  && curl https://rclone.org/install.sh | bash \
   # Install Neovim
   && curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz \
   && tar -zxvf nvim-linux64.tar.gz \
