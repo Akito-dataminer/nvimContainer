@@ -15,6 +15,9 @@ services:
       - type: volume # 例えばインストールしたLSPなどを保持しておくために必要。
         source: nvim
         target: /home/vimmer
+      - type: volume
+        source: shared_volume
+        target: /home/vimmer/usr
       # - type: bind
       #   source: "<your-ssh-key>" #your github ssh key dir
       #   target: "/root/.ssh"
@@ -23,3 +26,6 @@ services:
 
 volumes:
   nvim:
+  shared_volume:
+    name: ${VOLUME}
+    external: true
