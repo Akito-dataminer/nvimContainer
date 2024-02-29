@@ -12,7 +12,9 @@ services:
     environment:
       TZ: "Asia/Tokyo"
     volumes:
-      - nvim:/home/vimmer
+      - type: volume # 例えばインストールしたLSPなどを保持しておくために必要。
+        source: nvim
+        target: /home/vimmer
       # - type: bind
       #   source: "<your-ssh-key>" #your github ssh key dir
       #   target: "/root/.ssh"
