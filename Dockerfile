@@ -50,9 +50,9 @@ USER $USERNAME
 WORKDIR /home/$USERNAME/
 
 # Install deno (for Neovim)
-RUN curl -fsSL https://deno.land/x/install/install.sh | sh \
-  && echo "export DENO_INSTALL=\"/home/${USERNAME}/.deno\"" >> ~/.bash_profile \
-  && echo 'export PATH="$DENO_INSTALL/bin:$PATH"' >> ~/.bash_profile
+RUN curl -fsSL https://deno.land/x/install/install.sh | sh
+ENV DENO_INSTALL="/home/${USERNAME}/.deno"
+ENV PATH="$DENO_INSTALL/bin:$PATH"
 
 ARG NVIM_CONF_URL=${NVIM_CONF_URL}
 ARG GIT_USER=${GIT_USER}
