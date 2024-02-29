@@ -8,7 +8,6 @@ services:
         GIT_USER: ${GIT_USER}
         GIT_EMAIL: ${GIT_EMAIL}
         NVIM_CONF_URL: ${NVIM_CONF_URL}
-
     environment:
       TZ: "Asia/Tokyo"
     volumes:
