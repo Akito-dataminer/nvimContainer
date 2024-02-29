@@ -16,7 +16,7 @@ services:
         target: /home/vimmer
       - type: volume
         source: shared_volume
-        target: /home/vimmer/usr
+        target: /mnt/usr/
       - type: bind
         source: ${WORKSPACE}
         target: /home/vimmer/workspace
