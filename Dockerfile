@@ -53,11 +53,14 @@ ENV DENO_INSTALL="/home/${USERNAME}/.deno"
 ENV PATH="$DENO_INSTALL/bin:$PATH"
 
 ARG NVIM_CONF_URL=${NVIM_CONF_URL}
+ARG NVIM_DATA_URL=${NVIM_DATA_URL}
 ARG GIT_USER=${GIT_USER}
 ARG GIT_EMAIL=${GIT_EMAIL}
 RUN git config --global user.name "$GIT_USER" \
   && git config --global user.email "$GIT_EMAIL"
 RUN mkdir .config && cd .config && git clone $NVIM_CONF_URL
+RUN mkdir -p .local/share/ && cd .local/share/ && git clone ${NVIM_DATA_URL} nvim
+RUN cd /tmp && git clone https://github.com/skk-dev/dict.git && cp /tmp/dict/SKK-JISYO.L /home/${USERNAME}/.local/share/nvim/
 
 ENTRYPOINT ["nvim", "--headless", "--listen"]
 CMD ["0.0.0.0:6497"]
