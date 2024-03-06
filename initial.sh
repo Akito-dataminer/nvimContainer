@@ -7,10 +7,15 @@
 # 3. 他のコンテナの/usr/ディレクトリが/mnt/usr/としてマウントされていること。
 ### 利用方法
 # `docker compose up`等でコンテナを作成した後、コンテナに入らない状態で実行する。
+# 第一引数に開発環境のコンテナ名を指定する。
 ### 注意点
 # これはbashスクリプトなので、コンテナの外でも実行できてしまう。
 # しかし、コンテナ外で実行されると、コンテナ外の環境が変わるかもしれない。
 # そのためこのスクリプトでは、`docker exec`コマンドを利用することで、
 # コンテナの外で実行してもコンテナ外の環境が変わらないことを保証している。
 
-docker exec -u 0 nvimcontainer-nvim-1 rsync -rl /mnt/usr/ /usr
+if [[ -z "$1" ]]; then
+  echo "Please specify the container name."
+else
+  docker exec -u 0 $1 rsync -rl /mnt/usr/ /usr
+fi
