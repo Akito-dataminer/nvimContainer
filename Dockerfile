@@ -23,6 +23,7 @@ RUN apt-get update && apt-get upgrade -y \
   npm \
   python3 \
   python3-pip \
+  python3-venv \
   && locale-gen ja_JP.UTF-8 \
   && echo "export LANG=ja_JP.UTF-8" >> ~/.bashrc \
   && npm install n -g \
